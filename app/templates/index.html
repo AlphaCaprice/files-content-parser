@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plain texter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.5/ace.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+  <!-- bootstrap-fileinput by kartik-v -->
+  <script type="text/javascript" src="static/js/fileinput.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/css/fileinput.min.css">
+
+  <script type="text/javascript" src="static/js/theme.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/css/theme.css">
+
+  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+
+</head>
+<body>
+    <div class="container d-flex w-150 h-150 p-3 mx-auto flex-column">
+<!--       <form action="/handler" method="POST" enctype="multipart/form-data" target="_self">
+         <p><input type="file" name="documents" multiple title="Upload documents"></p>
+         <p><textarea name="links" cols="150" rows="20"></textarea></p>
+         <p><input type="submit" value="Отправить"></p>
+      </form> -->
+      <div class="file-input">
+        <form action="/handler" method="POST" enctype="multipart/form-data" target="_self">
+        <p><textarea class="form-control" rows=5 name="links"></textarea></p>
+        <input id="documents" name="documents" type="file" multiple>
+        </form>
+      </div>
+	</div>
+<script>
+$("#documents").fileinput({
+    theme: "explorer-fas",
+    minFileCount: 0,
+    maxFileCount: 15,
+    maxFileSize: 10000,
+    overwriteInitial: false,
+    allowedFileExtensions: ["doc", "pdf", "htm", "txt", "docx", "html"],
+    preferIconicPreview: true, // this will force thumbnails to display icons for following file extensions
+         previewFileIconSettings: { // configure your icon file extensions
+        'doc': '<i class="fas fa-file-word text-primary"></i>',
+        'pdf': '<i class="fas fa-file-pdf text-danger"></i>',
+        'htm': '<i class="fas fa-file-code text-warning"></i>',
+        'txt': '<i class="fa fa-file-alt text-info"></i>',
+    },
+    previewFileExtSettings: { // configure the logic for determining icon file extensions
+        'doc': function(ext) {
+            return ext.match(/(doc|docx)$/i);
+        },
+        'htm': function(ext) {
+            return ext.match(/(htm|html)$/i);
+        },
+        'txt': function(ext) {
+            return ext.match(/(txt|ini|csv|java|php|js|css)$/i);
+        }
+    }
+});
+</script>
+</body>
+</html>
