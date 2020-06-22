@@ -24,11 +24,6 @@
 </head>
 <body>
     <div class="container d-flex w-150 h-150 p-3 mx-auto flex-column">
-<!--       <form action="/handler" method="POST" enctype="multipart/form-data" target="_self">
-         <p><input type="file" name="documents" multiple title="Upload documents"></p>
-         <p><textarea name="links" cols="150" rows="20"></textarea></p>
-         <p><input type="submit" value="Отправить"></p>
-      </form> -->
       <div class="file-input">
         <form action="/handler" method="POST" enctype="multipart/form-data" target="_self">
         <p><textarea class="form-control" rows=5 name="links"></textarea></p>
@@ -43,6 +38,7 @@ $("#documents").fileinput({
     maxFileCount: 15,
     maxFileSize: 10000,
     overwriteInitial: false,
+    browseOnZoneClick: true,
     allowedFileExtensions: ["doc", "pdf", "htm", "txt", "docx", "html"],
     preferIconicPreview: true, // this will force thumbnails to display icons for following file extensions
          previewFileIconSettings: { // configure your icon file extensions

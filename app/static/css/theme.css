@@ -20,6 +20,13 @@
     background-color: #377f48!important;
     background-color: #377f48!important;
 }
+.file-drop-zone:hover {
+    border: 1px dashed #227fe9!important;
+}
+button.close {
+    display: none;
+}
+
 .theme-explorer-fas .file-preview-frame {
     border: 1px solid #ddd;
     margin: 2px 0;

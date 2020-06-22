@@ -3,6 +3,7 @@ from zipfile import ZipFile
 
 from flask import Flask, render_template, request, send_from_directory
 from flask_cors import CORS
+from requests.exceptions import ConnectionError
 from werkzeug.utils import secure_filename
 
 from app.utils.io_handler import clear_folder
@@ -41,7 +42,10 @@ def handler():
     if links:
         links = [link.strip() for link in links.split("\n") if link.strip()]
         for link in links:
-            process_link(link, PROCESSED)
+            try:
+                process_link(link, PROCESSED)
+            except ConnectionError:
+                print(f"Bad link. Skipped. {link}")
 
     with ZipFile(ZIP_PATH.joinpath("files.zip"), 'w') as zip_:
         for file in Path(PROCESSED).glob("*"):
