@@ -14,5 +14,5 @@ RUN pip install -r requirements.txt
 ADD . /files-uploader
 WORKDIR /files-uploader
 ENV PYTHONPATH /files-uploader
-EXPOSE 8888
-CMD python main.py
+EXPOSE 5000
+CMD ["python", "main.py"]

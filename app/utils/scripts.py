@@ -6,7 +6,7 @@ from urllib.parse import urlparse, unquote
 import requests
 import wikipedia
 
-from app.utils.file_parsers import load_pdf, load_docx, split_html, split_txt
+from app.utils.file_parsers import load_pdf, load_docx, load_html, load_txt
 from app.utils.io_handler import write_pages
 
 
@@ -14,11 +14,11 @@ ext_to_fun = {
     ".pdf": load_pdf,
     ".docx": load_docx,
     ".doc": load_docx,
-    ".html": split_html,
-    ".xml": split_html,
-    ".htm": split_html,
-    ".xht": split_html,
-    ".txt": split_txt,
+    ".html": load_html,
+    ".xml": load_html,
+    ".htm": load_html,
+    ".xht": load_html,
+    ".txt": load_txt,
 }
 
 
@@ -55,7 +55,7 @@ def process_link(link: str, saving_path: Path) -> None:
     filename = Path("{}-{}-{}.html".format(parsed_url.netloc, filename, hashed_query))
 
     filename.write_bytes(r.content)
-    pages = split_html(filename)
+    pages = load_html(filename)
     os.remove(filename)
 
     txt_path = saving_path.joinpath(f"{filename.stem}.txt")

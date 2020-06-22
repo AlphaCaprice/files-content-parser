@@ -77,7 +77,7 @@ def load_pdf(pdf: Union[str, Path, BinaryIO]) -> List[List]:
     return list_of_pages
 
 
-def split_html(file_path: Path) -> List[List]:
+def load_html(file_path: Path) -> List[List]:
     """Split html content to pages.
 
     Args:
@@ -100,7 +100,7 @@ def split_html(file_path: Path) -> List[List]:
     return paginate(lines)
 
 
-def split_txt(file_path: Path) -> List[List]:
+def load_txt(file_path: Path) -> List[List]:
     """Split text to pages.
 
     Args:

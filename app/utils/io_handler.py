@@ -11,7 +11,7 @@ def clear_folder(path: str) -> None:
 
 
 def write_pages(save_path: Path, pages: List[List[str]]) -> None:
-    """Writes 
+    """Writes two-dimension list of strings in file
     
     Args:
         save_path: where to save data
