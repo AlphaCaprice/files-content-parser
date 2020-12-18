@@ -16,7 +16,7 @@ NOTE: to extract text from .PDF files you must install java server to use [tika]
 ```bash
 sudo apt-get update && apt-get install -y default-jre
 ```
-Launching the application
+Launching the application:
 ```bash
 # clone this repository
 git clone https://github.com/AlphaCaprice/files-content-parser.git
